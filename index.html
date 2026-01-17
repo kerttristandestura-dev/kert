@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS for styling -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f1e;
+            color: #e0e0e0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(15, 15, 30, 0.95) !important;
+            box-shadow: 0 2px 20px rgba(0, 200, 200, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 200, 200, 0.2);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #00ffd9 !important;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.08);
+            text-shadow: 0 0 20px rgba(0, 255, 217, 0.6);
+        }
+
+        .nav-link {
+            font-weight: 600;
+            margin-left: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+            color: #e0e0e0 !important;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffd9 0%, #00d4ff 100%);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #00ffd9 !important;
+            text-shadow: 0 0 10px rgba(0, 255, 217, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a3e 100%);
+            color: white;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 255, 217, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-circle {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00ffd9 0%, #00d4ff 50%, #6d28d9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 255, 217, 0.4), inset 0 0 50px rgba(0, 212, 255, 0.2);
+        }
+
+        @keyframes rotateGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-circle img {
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #0f0f1e;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero h1 span {
+            color: #00ffd9;
+            text-shadow: 0 0 20px rgba(0, 255, 217, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: slideInLeft 0.8s ease-out 0.1s both;
+            line-height: 1.6;
+            color: #a8a8b8;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #00ffd9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ffd9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00ffd9 0%, #00d4ff 100%);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-icon:hover::before {
+            left: 0;
+        }
+
+        .social-icon:hover {
+            color: #0f0f1e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 217, 0.4);
+        }
+
+        .social-icon i {
+            font-size: 1.3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 13px 40px;
+            border: 2px solid #00ffd9;
+            color: #00ffd9;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: slideInLeft 0.8s ease-out 0.3s both;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00ffd9 0%, #00d4ff 100%);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            color: #0f0f1e;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 217, 0.4);
+        }
+
+        /* Section Padding */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            width: fit-content;
+            color: #ffffff;
+        }
+
+        .section-title span {
+            color: #00ffd9;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffd9 0%, #00d4ff 100%);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(0, 255, 217, 0.4);
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f1e 100%);
+        }
+
+        .about-text h2 {
+            font-size: 2.3rem;
+            margin-bottom: 25px;
+            color: #00ffd9;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #a8a8b8;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 255, 217, 0.2);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(0, 255, 217, 0.3);
+        }
+
+        .about-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 80px rgba(0, 255, 217, 0.3);
+            border-color: #00ffd9;
+        }
+
+        .about-image img {
+            border-radius: 20px;
+            display: block;
+            transition: all 0.4s ease;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a3e 100%);
+        }
+
+        .skill-item {
+            background: rgba(30, 30, 60, 0.5);
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 200, 200, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 30px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(0, 255, 217, 0.3);
+            border-color: #00ffd9;
+            background: rgba(30, 30, 60, 0.8);
+        }
+
+        .skill-item i {
+            font-size: 3rem;
+            color: #00ffd9;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover i {
+            transform: scale(1.15) rotate(10deg);
+            text-shadow: 0 0 20px rgba(0, 255, 217, 0.6);
+        }
+
+        .skill-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .progress {
+            height: 6px;
+            border-radius: 10px;
+            background: rgba(100, 100, 120, 0.3);
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #00ffd9 0%, #00d4ff 100%);
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 217, 0.5);
+        }
+
+        /* Projects Section */
+        #projects {
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f1e 100%);
+        }
+
+        .project-card {
+            background: rgba(30, 30, 60, 0.6);
+            border: 1px solid rgba(0, 255, 217, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            height: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 255, 217, 0.25);
+            border-color: #00ffd9;
+        }
+
+        .project-card img {
+            height: 220px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover img {
+            filter: brightness(1.2) saturate(1.3);
+            transform: scale(1.08);
+        }
+
+        .tech-knowledge-card:hover {
+            transform: translateY(-10px);
+            border-color: #00ffd9 !important;
+            box-shadow: 0 20px 50px rgba(0, 255, 217, 0.3), inset 0 0 30px rgba(0, 255, 217, 0.1) !important;
+            background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+        }
+
+        .tech-knowledge-card:hover > div {
+            opacity: 1;
+        }
+
+        .quality-card:hover {
+            transform: translateY(-10px);
+            border-color: #00ffd9 !important;
+            box-shadow: 0 20px 50px rgba(0, 255, 217, 0.3), inset 0 0 30px rgba(0, 255, 217, 0.1) !important;
+            background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+        }
+
+        .quality-card:hover > div {
+            opacity: 1;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #00ffd9;
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            color: #a8a8b8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-project {
+            background: transparent;
+            color: #00ffd9;
+            border: 2px solid #00ffd9;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00ffd9 0%, #00d4ff 100%);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-project:hover::before {
+            left: 0;
+        }
+
+        .btn-project:hover {
+            color: #0f0f1e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 255, 217, 0.4);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a3e 100%);
+        }
+
+        .contact-info {
+            padding: 40px;
+            background: rgba(30, 30, 60, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 200, 200, 0.1);
+            border: 1px solid rgba(0, 255, 217, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info h4 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: #00ffd9;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #a8a8b8;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid rgba(0, 255, 217, 0.3);
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            background: rgba(30, 30, 60, 0.5);
+            color: #e0e0e0;
+        }
+
+        .form-control::placeholder {
+            color: #666;
+        }
+
+        .form-control:focus {
+            border-color: #00ffd9;
+            box-shadow: 0 0 20px rgba(0, 255, 217, 0.3);
+            background: rgba(30, 30, 60, 0.8);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #00ffd9;
+            margin-bottom: 10px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #00ffd9 0%, #00d4ff 100%);
+            color: #0f0f1e;
+            border: none;
+            padding: 13px 35px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 255, 217, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 217, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 30, 0.95);
+            color: #e0e0e0;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 217, 0.2);
+        }
+
+        footer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        footer i {
+            color: #00ffd9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0 80px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-circle {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 30px;
+            }
+
+            .profile-circle img {
+                width: 240px;
+                height: 240px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+
+            .nav-link {
+                margin-left: 15px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-code"></i> Kert</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1>Hi, It's <span>Kert Tristan Destura</span></h1>
+                    <p>I am a 4th year Information Technology student with a strong interest in programming, networking, and system development. I enjoy learning new technologies and improving my technical skills through hands-on projects and research. </p>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/kerttristan" class="social-icon" title="LinkedIn" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:kerttristan86@gmail.com" class="social-icon" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1ADz1tEBwE/?mibextid=wwXIfr" class="social-icon" title="Facebook" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/itsyoboi.xiaa?igsh=MWdndTdxMTk2Z2ttag%3D%3D&utm_source=qr" class="social-icon" title="Instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+
+                    <a href="#contact" class="cta-button">
+                        <i class="fas fa-paper-plane"></i> Hire Me
+                    </a>
+                </div>
+
+                <div class="col-lg-6 hero-image">
+                    <div class="profile-circle">
+                        <img src="kert.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">My <span>Services</span></h2>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Responsive Design</h4>
+                        <p>Creating beautiful, mobile-first designs that work seamlessly across all devices and screen sizes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <i class="fas fa-server"></i>
+                        <h4>Backend Development</h4>
+                        <p>Building robust server-side applications with modern frameworks and databases.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <i class="fas fa-network-wired"></i>
+                        <h4>Networking</h4>
+                        <p>Setting up and managing network infrastructure, troubleshooting connectivity, and ensuring secure communication.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">My <span>Skills</span></h2>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <h4>Frontend</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" style="width: 95%"></div>
+                        </div>
+                        <p>HTML, CSS, JavaScript</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <i class="fab fa-node"></i>
+                        <h4>Backend</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" style="width: 88%"></div>
+                        </div>
+                        <p> PHP, Python </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <h4>Databases</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" style="width: 92%"></div>
+                        </div>
+                        <p>MySQL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Qualities Section -->
+    <section id="qualities" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Personal <span>Qualities</span></h2>
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4">
+                    <div class="quality-card" style="background: linear-gradient(135deg, rgba(0, 255, 217, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 2px solid rgba(0, 255, 217, 0.3); padding: 35px; border-radius: 12px; text-align: center; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; height: 100%; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;"></div>
+                        <i class="fas fa-bolt" style="color: #00ffd9; font-size: 2.5rem; margin-bottom: 15px; position: relative; z-index: 1; display: block;"></i>
+                        <h5 style="color: #00ffd9; font-weight: 700; position: relative; z-index: 1;">Fast Learner</h5>
+                        <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0; position: relative; z-index: 1;">Quickly grasp new concepts and technologies</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="quality-card" style="background: linear-gradient(135deg, rgba(0, 255, 217, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 2px solid rgba(0, 255, 217, 0.3); padding: 35px; border-radius: 12px; text-align: center; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; height: 100%; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;"></div>
+                        <i class="fas fa-list-check" style="color: #00ffd9; font-size: 2.5rem; margin-bottom: 15px; position: relative; z-index: 1; display: block;"></i>
+                        <h5 style="color: #00ffd9; font-weight: 700; position: relative; z-index: 1;">Organized</h5>
+                        <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0; position: relative; z-index: 1;">Manage projects and time effectively</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="quality-card" style="background: linear-gradient(135deg, rgba(0, 255, 217, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 2px solid rgba(0, 255, 217, 0.3); padding: 35px; border-radius: 12px; text-align: center; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; height: 100%; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;"></div>
+                        <i class="fas fa-graduation-cap" style="color: #00ffd9; font-size: 2.5rem; margin-bottom: 15px; position: relative; z-index: 1; display: block;"></i>
+                        <h5 style="color: #00ffd9; font-weight: 700; position: relative; z-index: 1;">Willing to Learn</h5>
+                        <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0; position: relative; z-index: 1;">Always seeking knowledge and growth</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="quality-card" style="background: linear-gradient(135deg, rgba(0, 255, 217, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 2px solid rgba(0, 255, 217, 0.3); padding: 35px; border-radius: 12px; text-align: center; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; height: 100%; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;"></div>
+                        <i class="fas fa-sync-alt" style="color: #00ffd9; font-size: 2.5rem; margin-bottom: 15px; position: relative; z-index: 1; display: block;"></i>
+                        <h5 style="color: #00ffd9; font-weight: 700; position: relative; z-index: 1;">Adaptable</h5>
+                        <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0; position: relative; z-index: 1;">Flexible and responsive to change</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="quality-card" style="background: linear-gradient(135deg, rgba(0, 255, 217, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 2px solid rgba(0, 255, 217, 0.3); padding: 35px; border-radius: 12px; text-align: center; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; height: 100%; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;"></div>
+                        <i class="fas fa-magnifying-glass" style="color: #00ffd9; font-size: 2.5rem; margin-bottom: 15px; position: relative; z-index: 1; display: block;"></i>
+                        <h5 style="color: #00ffd9; font-weight: 700; position: relative; z-index: 1;">Detail-Oriented</h5>
+                        <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0; position: relative; z-index: 1;">Meticulous attention to quality</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="quality-card" style="background: linear-gradient(135deg, rgba(0, 255, 217, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 2px solid rgba(0, 255, 217, 0.3); padding: 35px; border-radius: 12px; text-align: center; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; height: 100%; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;"></div>
+                        <i class="fas fa-brain" style="color: #00ffd9; font-size: 2.5rem; margin-bottom: 15px; position: relative; z-index: 1; display: block;"></i>
+                        <h5 style="color: #00ffd9; font-weight: 700; position: relative; z-index: 1;">Problem Solver</h5>
+                        <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0; position: relative; z-index: 1;">Analytical and creative solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Educational <span>Background</span></h2>
+            <div class="row mt-5">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="education-card" style="background: rgba(30, 30, 60, 0.6); border: 1px solid rgba(0, 255, 217, 0.2); border-radius: 15px; padding: 40px; margin-bottom: 50px; backdrop-filter: blur(10px);">
+                        <h3 style="color: #00ffd9; margin-bottom: 10px;">Bachelor of Science in Information Technology (BSIT)</h3>
+                        <p style="color: #a8a8b8; font-size: 1.1rem; margin-bottom: 25px;"><strong>Olivares College Tagaytay</strong></p>
+                        <p style="color: #a8a8b8; margin-bottom: 25px;"><strong>2022 – Present</strong></p>
+                        
+                        <h5 style="color: #00ffd9; margin-top: 25px; margin-bottom: 20px;">Highlights:</h5>
+                        <ul style="color: #a8a8b8; line-height: 2;">
+                            <li><i class="fas fa-check" style="color: #00ffd9; margin-right: 10px;"></i>Completed Capstone Project</li>
+                            <li><i class="fas fa-check" style="color: #00ffd9; margin-right: 10px;"></i>Gaining hands-on experience in web development, database management, and IT support</li>
+                            <li><i class="fas fa-check" style="color: #00ffd9; margin-right: 10px;"></i>Familiar with systems analysis, troubleshooting, and basic networking</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 style="color: #00ffd9; margin-bottom: 30px; text-align: center;">Coursework / Subjects Taken</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div style="background: rgba(30, 30, 60, 0.4); border-left: 4px solid #00ffd9; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                                    <h6 style="color: #00ffd9; margin-bottom: 15px;"><i class="fas fa-code"></i> Web Development</h6>
+                                    <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0;">Frontend and backend web technologies</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="background: rgba(30, 30, 60, 0.4); border-left: 4px solid #00ffd9; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                                    <h6 style="color: #00ffd9; margin-bottom: 15px;"><i class="fas fa-cube"></i> Object Oriented Programming</h6>
+                                    <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0;">OOP principles and design patterns</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="background: rgba(30, 30, 60, 0.4); border-left: 4px solid #00ffd9; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                                    <h6 style="color: #00ffd9; margin-bottom: 15px;"><i class="fas fa-database"></i> Database Management</h6>
+                                    <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0;">Database design and SQL optimization</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="background: rgba(30, 30, 60, 0.4); border-left: 4px solid #00ffd9; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                                    <h6 style="color: #00ffd9; margin-bottom: 15px;"><i class="fas fa-sitemap"></i> Networking</h6>
+                                    <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0;">Network architecture and protocols</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="background: rgba(30, 30, 60, 0.4); border-left: 4px solid #00ffd9; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                                    <h6 style="color: #00ffd9; margin-bottom: 15px;"><i class="fas fa-cogs"></i> Systems Analysis & Design</h6>
+                                    <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0;">System design and development processes</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="background: rgba(30, 30, 60, 0.4); border-left: 4px solid #00ffd9; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                                    <h6 style="color: #00ffd9; margin-bottom: 15px;"><i class="fas fa-rocket"></i> Technopreneurship</h6>
+                                    <p style="color: #a8a8b8; font-size: 0.95rem; margin: 0;">Technology business and innovation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="color: #00ffd9; margin-bottom: 40px; text-align: center; font-size: 1.8rem; font-weight: 700; letter-spacing: 1px;">💻 Technical Knowledge</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="tech-knowledge-card" style="background: linear-gradient(135deg, rgba(0, 255, 217, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 2px solid rgba(0, 255, 217, 0.3); padding: 35px; margin-bottom: 30px; border-radius: 12px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;">
+                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;"></div>
+                                    <h6 style="color: #00ffd9; margin-bottom: 20px; font-size: 1.2rem; font-weight: 700; position: relative; z-index: 1;"><i class="fas fa-code" style="margin-right: 10px;"></i> Programming Languages</h6>
+                                    <ul style="color: #a8a8b8; font-size: 0.98rem; margin: 0; padding-left: 25px; position: relative; z-index: 1; line-height: 2.2;">
+                                        <li><span style="color: #00ffd9;">►</span> HTML</li>
+                                        <li><span style="color: #00ffd9;">►</span> CSS</li>
+                                        <li><span style="color: #00ffd9;">►</span> JavaScript</li>
+                                        <li><span style="color: #00ffd9;">►</span> PHP</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="tech-knowledge-card" style="background: linear-gradient(135deg, rgba(0, 255, 217, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 2px solid rgba(0, 255, 217, 0.3); padding: 35px; margin-bottom: 30px; border-radius: 12px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;">
+                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 255, 217, 0.15) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;"></div>
+                                    <h6 style="color: #00ffd9; margin-bottom: 20px; font-size: 1.2rem; font-weight: 700; position: relative; z-index: 1;"><i class="fas fa-database" style="margin-right: 10px;"></i> Databases</h6>
+                                    <ul style="color: #a8a8b8; font-size: 0.98rem; margin: 0; padding-left: 25px; position: relative; z-index: 1; line-height: 2.2;">
+                                        <li><span style="color: #00ffd9;">►</span> MySQL</li>
+                                        <li><span style="color: #00ffd9;">►</span> Basic Authentication</li>
+                                        <li><span style="color: #00ffd9;">►</span> Database Normalization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                        </div>
+                    </div>
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <h4><i class="fas fa-envelope"></i> Contact Info</h4>
+                        <p><strong>Email:</strong> kerttristan86@gmail.com</p>
+                        <p><strong>Phone:</strong> 09946486395</p>
+                        <p><strong>Location:</strong> Banilad, Nasugbu, Batangas</p>
+                        
+                        <h5 style="margin-top: 30px; margin-bottom: 20px; color: #00ffd9;"><i class="fas fa-link"></i> Social Links</h5>
+                        
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/kert-tristan-948a" class="social-icon" title="LinkedIn" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:kerttristan86@gmail.com" class="social-icon" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.facebook.com/share/1ADz1tEBwE/?mibextid=wwXIfr" class="social-icon" title="Facebook" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/itsyoboi.xiaa?igsh=MWdndTdxMTk2Z2ttag%3D%3D&utm_source=qr" class="social-icon" title="Instagram" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="form-label"> Kert Tristan Destura</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="What is this about?" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Tell me more..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit w-100">
+                            <i class="fas fa-paper-plane me-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kert Tristan. All rights reserved.  </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 30px rgba(0, 255, 217, 0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 200, 200, 0.1)';
+            }
+        });
+
+        // Social icons are now handled with direct links in HTML
+
+        // Animate progress bars on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.6s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-item, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
